@@ -271,8 +271,9 @@ body {
   .recipe-meta { flex-wrap: wrap; }
 }
 
-/* Раскладка кнопок в мета: Таймер справа, рядом + В меню */
-.recipe-meta .timer-button { margin-left: auto; }
+/* Кнопки под мета-блоком */
+.recipe-actions { display:flex; gap:8px; margin-top:8px; }
+.recipe-actions .timer-button { margin-left: 0; }
 
 /* Печать / PDF */
 @page { size: A4; margin: 12mm; }
@@ -851,11 +852,27 @@ function restoreState(){
 function injectAddToMenuButtons(){
   document.querySelectorAll('.recipe').forEach(card => {
     const meta = card.querySelector('.recipe-meta');
-    if (!meta || meta.querySelector('.add-to-plan')) return;
-    const btn = document.createElement('span');
-    btn.className = 'add-to-plan';
-    btn.textContent = '＋ В меню';
-    btn.addEventListener('click', (e)=>{ e.stopPropagation(); togglePlan(btn); });
+    if (!meta) return;
+    // создаём/находим блок действий сразу под метой
+    let actions = card.querySelector('.recipe-actions');
+    if (!actions){
+      actions = document.createElement('div');
+      actions.className = 'recipe-actions';
+      meta.insertAdjacentElement('afterend', actions);
+    }
+    // перенесём кнопку таймера из меты вниз
+    const timerBtn = meta.querySelector('.timer-button');
+    if (timerBtn && timerBtn.parentElement !== actions) actions.appendChild(timerBtn);
+    // добавим кнопку "+ В меню", если её ещё нет
+    if (!actions.querySelector('.add-to-plan')){
+      const addBtn = document.createElement('span');
+      addBtn.className = 'add-to-plan';
+      addBtn.textContent = '＋ В меню';
+      addBtn.addEventListener('click', (e)=>{ e.stopPropagation(); togglePlan(addBtn); });
+      actions.appendChild(addBtn);
+    }
+  });
+});
     meta.appendChild(btn);
   });
 }
