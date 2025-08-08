@@ -1236,9 +1236,13 @@ function toggleNav() {
 function scrollToRecipe(recipeId) {
     toggleNav();
     const element = document.getElementById(recipeId);
-    const offset = 60; // высота навигации
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    if (!element) return;
+    
+    // Получаем позицию элемента
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    // Вычитаем высоту навигации
+    const navHeight = document.querySelector('.nav-header').offsetHeight;
+    const offsetPosition = elementPosition - navHeight;
     
     window.scrollTo({
         top: offsetPosition,
@@ -1291,7 +1295,6 @@ function startTimer(minutes) {
             if (timerSeconds === 0) {
                 // Таймер закончился
                 playTimerSound();
-                alert('Время готовки истекло!');
                 stopTimer();
             }
         }
@@ -1320,10 +1323,80 @@ function stopTimer() {
 }
 
 function playTimerSound() {
+    // Создаем звуковой сигнал
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function beep(frequency, duration) {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = frequency;
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + duration);
+    }
+    
+    // Проигрываем 3 коротких сигнала
+    beep(800, 0.2);
+    setTimeout(() => beep(800, 0.2), 300);
+    setTimeout(() => beep(800, 0.2), 600);
+    
     // Вибрация на мобильных устройствах
     if (navigator.vibrate) {
         navigator.vibrate([200, 100, 200, 100, 200]);
     }
+    
+    // Показываем уведомление
+    showTimerNotification();
+}
+
+function showTimerNotification() {
+    // Создаем элемент уведомления
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        z-index: 1000;
+        text-align: center;
+        min-width: 280px;
+    `;
+    
+    notification.innerHTML = `
+        <div style="font-size: 48px; margin-bottom: 15px;">⏰</div>
+        <div style="font-size: 20px; color: var(--primary-warm); font-weight: 500; margin-bottom: 20px;">Время готовки истекло!</div>
+        <button onclick="this.parentElement.remove()" style="
+            background: var(--accent-soft);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        ">Закрыть</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Автоматически удаляем через 5 секунд
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 5000);
 }
 
 // Кнопка поделиться
