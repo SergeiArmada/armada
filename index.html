@@ -272,20 +272,6 @@ body {
     display: block;
 }
 
-.difficulty-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: var(--secondary-warm);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
 .recipe-content {
     padding: 25px 20px;
 }
@@ -307,6 +293,32 @@ body {
     color: var(--secondary-warm);
     margin-bottom: 15px;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.timer-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-light);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--secondary-warm);
+    cursor: pointer;
+    margin-left: auto;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.timer-button:hover {
+    border-color: var(--accent-soft);
+}
+
+.timer-button:active {
+    transform: scale(0.95);
+    background: var(--accent-soft);
+    color: white;
 }
 
 .health-benefits {
@@ -380,7 +392,7 @@ body {
 
 .ingredients-list li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 10px;
     font-size: 15px;
     color: var(--text-main);
@@ -388,17 +400,17 @@ body {
 }
 
 .ingredient-checkbox {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border: 1.5px solid var(--accent-soft);
-    border-radius: 3px;
-    margin-right: 10px;
-    margin-top: 2px;
+    border-radius: 4px;
+    margin-right: 12px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .ingredient-checkbox.checked {
@@ -409,7 +421,7 @@ body {
 .ingredient-checkbox.checked::after {
     content: '✓';
     color: white;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
 }
 
@@ -420,12 +432,14 @@ body {
 
 .steps-list li {
     counter-increment: step-counter;
-    padding-left: 32px;
+    padding-left: 36px;
     position: relative;
     margin-bottom: 12px;
     font-size: 15px;
     line-height: 1.5;
     color: var(--text-main);
+    display: flex;
+    align-items: flex-start;
 }
 
 .steps-list li::before {
@@ -433,12 +447,12 @@ body {
     position: absolute;
     left: 0;
     top: 2px;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     background: linear-gradient(135deg, var(--accent-soft), #c2a491);
     color: white;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -645,24 +659,6 @@ body {
     background: #e74c3c;
 }
 
-/* Кнопка таймера в рецепте */
-.timer-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--accent-light);
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    color: var(--secondary-warm);
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.timer-button:active {
-    transform: scale(0.95);
-}
-
 /* Адаптация под маленькие экраны */
 @media screen and (max-width: 380px) {
     .cover-name {
@@ -670,11 +666,20 @@ body {
     }
     
     .recipe-title {
-        font-size: 24px;
+        font-size: 22px;
     }
     
     .letter-content {
         font-size: 18px;
+    }
+    
+    .recipe-meta {
+        flex-wrap: wrap;
+    }
+    
+    .timer-button {
+        margin-left: 0;
+        margin-top: 5px;
     }
 }
 
@@ -751,7 +756,7 @@ body {
 
 <!-- Обложка -->
 <div class="section cover">
-    <div class="cover-month">Август — Октябрь 2025</div>
+    <div class="cover-month">Август 2025</div>
     <div class="cover-name">Маргарита</div>
     <div class="cover-subtitle">9 персональных рецептов</div>
     <div class="progress-dots">
@@ -769,7 +774,7 @@ body {
     <div class="letter-content">
         <p>Дорогая Маргарита,</p>
         <p>Эта книга создана специально для вас. Каждый рецепт подобран с учётом вашего здоровья, предпочтений и целей. Здесь нет случайных блюд — только то, что поддержит ваш организм именно сейчас.</p>
-        <p>9 рецептов на следующие три месяца — это ваша кулинарная основа. Завтраки для энергичного утра, обеды для продуктивного дня, ужины для восстановления.</p>
+        <p>9 рецептов на следующий месяц — это ваша кулинарная основа. Завтраки для энергичного утра, обеды для продуктивного дня, ужины для восстановления.</p>
         <p>Готовьте их в любом порядке, миксуйте, адаптируйте под настроение. К каждому рецепту я добавила личную рекомендацию — почему это блюдо важно именно для вас.</p>
         <p>Помните: еда — это не ограничения, а забота. Готовьте с удовольствием, без спешки. Наслаждайтесь процессом и результатом.</p>
         <div class="letter-signature">Ваша Светлана</div>
@@ -780,7 +785,6 @@ body {
 <div class="recipe" id="recipe-1">
     <div class="recipe-image">
         <img src="Image/brk_001.png" alt="Яйца-пашот с авокадо и зеленью">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Яйца-пашот с авокадо и зеленью</h3>
@@ -824,7 +828,6 @@ body {
 <div class="recipe" id="recipe-2">
     <div class="recipe-image">
         <img src="Image/brk_002.png" alt="Тёплая гречневая каша с яйцом и зеленью">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Тёплая гречневая каша с яйцом и зеленью</h3>
@@ -868,7 +871,6 @@ body {
 <div class="recipe" id="recipe-3">
     <div class="recipe-image">
         <img src="Image/brk_003.png" alt="Омлет на пару с зеленью">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Омлет на пару с зеленью</h3>
@@ -910,7 +912,6 @@ body {
 <!-- Рецепт 4 -->
 <div class="recipe" id="recipe-4">
     <div class="recipe-image">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Овощной суп с чечевицей</h3>
@@ -956,7 +957,6 @@ body {
 <!-- Рецепт 5 -->
 <div class="recipe" id="recipe-5">
     <div class="recipe-image">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Индейка с тушёной брокколи</h3>
@@ -1000,7 +1000,6 @@ body {
 <!-- Рецепт 6 -->
 <div class="recipe" id="recipe-6">
     <div class="recipe-image">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Рыба в фольге с зеленью</h3>
@@ -1044,7 +1043,6 @@ body {
 <!-- Рецепт 7 -->
 <div class="recipe" id="recipe-7">
     <div class="recipe-image">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Крем-суп из цветной капусты</h3>
@@ -1087,7 +1085,6 @@ body {
 <!-- Рецепт 8 -->
 <div class="recipe" id="recipe-8">
     <div class="recipe-image">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Тёплый салат с яйцом и брокколи</h3>
@@ -1130,7 +1127,6 @@ body {
 <!-- Рецепт 9 -->
 <div class="recipe" id="recipe-9">
     <div class="recipe-image">
-        <div class="difficulty-badge">Простой</div>
     </div>
     <div class="recipe-content">
         <h3 class="recipe-title">Яичница со шпинатом и зеленью</h3>
@@ -1265,75 +1261,11 @@ function updateCaloriesCounter() {
     }
 }
 
-// Чекбоксы в навигации
-document.querySelectorAll('.nav-checkbox').forEach(checkbox => {
-    checkbox.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('checked');
-        
-        // Синхронизация с чекбоксами ингредиентов
-        const recipeId = this.dataset.recipe;
-        const recipeChecked = this.classList.contains('checked');
-        
-        // Обновление счетчика калорий
-        const recipeElement = document.querySelector(`#recipe-${recipeId} .recipe-calories`);
-        if (recipeElement) {
-            const calories = parseInt(recipeElement.dataset.calories);
-            if (recipeChecked) {
-                totalCalories += calories;
-            } else {
-                totalCalories -= calories;
-            }
-            updateCaloriesCounter();
-        }
-        
-        document.querySelectorAll(`.ingredient-checkbox[data-recipe="${recipeId}"]`).forEach(ingCheckbox => {
-            if (recipeChecked) {
-                ingCheckbox.classList.add('checked');
-            } else {
-                ingCheckbox.classList.remove('checked');
-            }
-        });
-    });
-});
-
 // Чекбоксы ингредиентов
 document.querySelectorAll('.ingredient-checkbox').forEach(checkbox => {
     checkbox.addEventListener('click', function(e) {
         e.stopPropagation();
         this.classList.toggle('checked');
-        
-        // Проверка всех ингредиентов рецепта
-        const recipeId = this.dataset.recipe;
-        const allIngredients = document.querySelectorAll(`.ingredient-checkbox[data-recipe="${recipeId}"]`);
-        const checkedIngredients = document.querySelectorAll(`.ingredient-checkbox[data-recipe="${recipeId}"].checked`);
-        
-        // Обновление навигационного чекбокса
-        const navCheckbox = document.querySelector(`.nav-checkbox[data-recipe="${recipeId}"]`);
-        if (navCheckbox) {
-            const wasChecked = navCheckbox.classList.contains('checked');
-            if (checkedIngredients.length === allIngredients.length) {
-                if (!wasChecked) {
-                    navCheckbox.classList.add('checked');
-                    // Добавляем калории
-                    const recipeElement = document.querySelector(`#recipe-${recipeId} .recipe-calories`);
-                    if (recipeElement) {
-                        totalCalories += parseInt(recipeElement.dataset.calories);
-                        updateCaloriesCounter();
-                    }
-                }
-            } else {
-                if (wasChecked) {
-                    navCheckbox.classList.remove('checked');
-                    // Убираем калории
-                    const recipeElement = document.querySelector(`#recipe-${recipeId} .recipe-calories`);
-                    if (recipeElement) {
-                        totalCalories -= parseInt(recipeElement.dataset.calories);
-                        updateCaloriesCounter();
-                    }
-                }
-            }
-        }
     });
 });
 
@@ -1423,14 +1355,9 @@ window.addEventListener('scroll', function() {
 // Сохранение состояния чекбоксов в localStorage
 function saveCheckboxState() {
     const checkedItems = {
-        nav: [],
         ingredients: [],
         calories: totalCalories
     };
-    
-    document.querySelectorAll('.nav-checkbox.checked').forEach(cb => {
-        checkedItems.nav.push(cb.dataset.recipe);
-    });
     
     document.querySelectorAll('.ingredient-checkbox.checked').forEach(cb => {
         const recipeId = cb.dataset.recipe;
@@ -1451,11 +1378,6 @@ function restoreCheckboxState() {
         totalCalories = checkedItems.calories || 0;
         updateCaloriesCounter();
         
-        checkedItems.nav.forEach(recipeId => {
-            const checkbox = document.querySelector(`.nav-checkbox[data-recipe="${recipeId}"]`);
-            if (checkbox) checkbox.classList.add('checked');
-        });
-        
         if (checkedItems.ingredients) {
             checkedItems.ingredients.forEach(id => {
                 const [recipeId, index] = id.split('-');
@@ -1467,7 +1389,7 @@ function restoreCheckboxState() {
 }
 
 // Добавление обработчиков для сохранения
-document.querySelectorAll('.nav-checkbox, .ingredient-checkbox').forEach(checkbox => {
+document.querySelectorAll('.ingredient-checkbox').forEach(checkbox => {
     checkbox.addEventListener('click', saveCheckboxState);
 });
 
