@@ -9,7 +9,7 @@
 :root{
   --primary-warm:#6b5d56;--secondary-warm:#8b7468;--accent-soft:#d4b5a0;--accent-light:#f0e8e0;
   --bg-cream:#fdfcfb;--bg-soft:#faf8f5;--text-main:#3a3a3a;--text-soft:#8a756b;
-  --success:#7fb069;--energy:#f4a261;--calm:#a8dadc;--gold:#c8a97e;
+  --success:#7fb069;--energy:#f4a261;--calm:#a8dadc;
 }
 body{
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;font-weight:400;line-height:1.6;
@@ -18,8 +18,11 @@ body{
 }
 .container{max-width:450px;margin:0 auto;background:#fff;min-height:100vh}
 
-/* Навигация */
-.nav-header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--accent-light);z-index:10001}
+/* Шапка/навигация */
+.nav-header{
+  position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--accent-light);z-index:10001;
+}
 .nav-toggle{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;width:100%;background:transparent;border:0}
 .nav-toggle:focus-visible{outline:2px solid var(--accent-soft)}
 .nav-title{font-size:14px;font-weight:500;letter-spacing:.5px;color:var(--secondary-warm);text-transform:uppercase}
@@ -61,54 +64,70 @@ body{
 .recipe{padding:0;border-bottom:1px solid var(--accent-light)}
 .recipe-image{width:100%;height:220px;position:relative;background:repeating-linear-gradient(45deg,#f5f0ea,#f5f0ea 10px,#e8ddd5 10px,#e8ddd5 20px);overflow:hidden}
 .recipe-image img{width:100%;height:100%;object-fit:cover;display:block}
+
 .recipe-content{padding:20px}
 .recipe-title{font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:400;color:var(--primary-warm);margin-bottom:8px;line-height:1.1;letter-spacing:-.3px}
 .recipe-meta{display:flex;gap:12px;font-size:13px;color:var(--secondary-warm);margin-bottom:12px;flex-wrap:wrap;align-items:center}
 
 .health-benefits{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}
-.benefit-tag{display:inline-flex;align-items:center;gap:6px;background:#fff;padding:5px 12px;border-radius:15px;font-size:11px;letter-spacing:.3px;text-transform:uppercase;color:var(--secondary-warm);border:1px solid var(--accent-light)}
+.benefit-tag{display:inline-flex;align-items:center;gap:6px;background:#fff;padding:6px 12px;border-radius:6px;font-size:11px;letter-spacing:.3px;text-transform:uppercase;color:var(--secondary-warm);border:1px solid var(--accent-light)}
 .benefit-tag::before{content:'';width:4px;height:4px;background:var(--accent-soft);border-radius:50%}
 
-.recipe-personal{font-size:15px;line-height:1.6;color:#6a6a6a;margin-bottom:20px;padding:16px 16px 16px 30px;background:linear-gradient(135deg,var(--bg-soft),#fff);border-radius:10px;position:relative}
+.recipe-personal{font-size:16px;line-height:1.65;color:#6a6a6a;margin-bottom:20px;padding:16px 16px 16px 30px;background:linear-gradient(135deg,var(--bg-soft),#fff);border-radius:10px;position:relative}
 .recipe-personal::before{content:'\"';position:absolute;left:12px;top:12px;font-size:22px;color:var(--accent-soft);font-family:Georgia,serif;opacity:.5}
 
 .recipe-block{margin-bottom:22px}
-.recipe-block h4{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--secondary-warm);margin-bottom:10px;font-weight:500}
+.recipe-block h4{font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--secondary-warm);margin-bottom:10px;font-weight:500}
 
-/* ИНГРЕДИЕНТЫ: жёстко убираем нативные маркеры во всех браузерах + Safari */
-.ingredients-list{list-style:none !important;padding-left:0;margin-left:0;-webkit-padding-start:0}
-.ingredients-list>li{list-style:none !important;list-style-type:none !important;display:flex;align-items:center;margin-bottom:8px;font-size:15px;color:var(--text-main);padding:4px 0;position:relative}
-.ingredients-list li::marker{content:""} /* Safari */
-.ingredient-checkbox{width:20px;height:20px;border:1.5px solid var(--accent-soft);border-radius:4px;margin-right:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;background:#fff}
+.ingredients-list{list-style:none}
+.ingredients-list li{display:flex;align-items:center;margin-bottom:8px;font-size:16px;color:var(--text-main);padding:4px 0}
+.ingredient-checkbox{width:20px;height:20px;border:1.5px solid var(--accent-soft);border-radius:4px;margin-right:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s}
 .ingredient-checkbox.checked{background:var(--success);border-color:var(--success)}
 .ingredient-checkbox.checked::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
 
-/* ПРИГОТОВЛЕНИЕ: выключаем нативные цифры и рисуем свои квадратики */
-.steps-list{list-style:none !important;padding-left:0;margin-left:0;counter-reset:step-counter}
-.steps-list>li{list-style:none !important;list-style-type:none !important;counter-increment:step-counter;position:relative;margin-bottom:10px;font-size:15px;line-height:1.5;color:var(--text-main);display:flex;align-items:flex-start;padding-left:36px}
-.steps-list li::marker{content:""} /* Safari */
-.steps-list li::before{
-  content:counter(step-counter);
-  position:absolute;left:0;top:2px;width:24px;height:24px;
-  background:linear-gradient(135deg,var(--accent-soft),#c2a491);
-  color:#fff;border-radius:5px;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center
-}
+.steps-list{list-style:none;counter-reset:step-counter}
+.steps-list li{counter-increment:step-counter;padding-left:36px;position:relative;margin-bottom:10px;font-size:16px;line-height:1.5;color:var(--text-main);display:flex;align-items:flex-start}
+.steps-list li::before{content:counter(step-counter);position:absolute;left:0;top:2px;width:24px;height:24px;background:linear-gradient(135deg,var(--accent-soft),#c2a491);color:#fff;border-radius:5px;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center}
 
-/* Финал — премиум без эмодзи */
-.final{padding:54px 20px;background:linear-gradient(180deg,#fff 0%, #fbf8f3 60%, #f6efe8 100%)}
-.final-card{max-width:420px;margin:0 auto;background:#fff;border:1px solid rgba(200,169,126,.35);border-radius:18px;padding:28px 22px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
-.final-mark{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid rgba(200,169,126,.6);color:#8c7766;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(250,244,236,.9));margin-bottom:18px}
-.final-quote{font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.4;color:var(--primary-warm);margin-bottom:20px;font-weight:300;text-align:center}
-.final-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(200,169,126,.7),transparent);margin:18px 0 14px}
-.final-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 6px}
-.final-pill{text-align:center;padding:10px 8px;border-radius:12px;border:1px solid rgba(200,169,126,.35);color:#7a6a5f;font-size:12px;background:linear-gradient(180deg,#fff,#faf6f0)}
-.final-footer{margin-top:18px;text-align:center;font-size:12px;color:#8f7b6e;letter-spacing:.6px}
-.final-sign{margin-top:8px;font-family:Georgia,'Times New Roman',serif;font-size:18px;color:var(--secondary-warm);font-style:italic}
+/* Финал - новый дизайн */
+.final{padding:60px 20px 40px;background:linear-gradient(135deg,#fff,var(--bg-soft))}
+.final-stats{display:flex;justify-content:center;gap:30px;margin-bottom:40px}
+.stat-item{text-align:center}
+.stat-number{font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:300;color:var(--primary-warm);line-height:1}
+.stat-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-soft);margin-top:8px}
 
-/* Share */
+.final-message{text-align:center;margin-bottom:50px}
+.final-message h3{font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:300;color:var(--primary-warm);margin-bottom:16px;line-height:1.2}
+.final-message p{font-size:15px;line-height:1.6;color:#6a6a6a;max-width:320px;margin:0 auto}
+
+.cta-section{text-align:center;padding:35px 25px;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(107,93,86,0.08);margin-bottom:40px}
+.cta-title{font-size:20px;font-weight:500;color:var(--primary-warm);margin-bottom:12px}
+.cta-subtitle{font-size:14px;color:var(--text-soft);margin-bottom:24px;line-height:1.5}
+.cta-button{display:inline-block;background:var(--primary-warm);color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:15px;font-weight:500;transition:transform .2s,box-shadow .2s}
+.cta-button:active{transform:scale(0.98)}
+.cta-features{display:flex;justify-content:center;gap:20px;margin-top:24px;padding-top:24px;border-top:1px solid var(--accent-light)}
+.cta-feature{font-size:12px;color:var(--text-soft);display:flex;align-items:center;gap:6px}
+.cta-feature::before{content:'✓';color:var(--success);font-weight:600}
+
+.final-footer{text-align:center}
+.final-hashtag{font-size:13px;color:var(--accent-soft);letter-spacing:1.5px;margin-bottom:20px}
+.final-signature{font-size:12px;color:var(--text-soft)}
+.final-signature span{display:block;font-family:Georgia,'Times New Roman',serif;font-size:18px;color:var(--secondary-warm);font-style:italic;margin-top:8px}
+
+/* Плавающие кнопки */
 .share-button{position:fixed;bottom:20px;right:20px;width:48px;height:48px;background:var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:100;cursor:pointer;transition:.3s}
 .share-button:active{transform:scale(.95)}
 .share-button svg{width:24px;height:24px;fill:#fff}
+
+/* Мелкая адаптация */
+@media (max-width:380px){
+  .cover-name{font-size:42px}
+  .recipe-title{font-size:22px}
+  .letter-content{font-size:18px}
+  .final-stats{gap:20px}
+  .stat-number{font-size:32px}
+  .cta-features{flex-direction:column;gap:12px}
+}
 
 /* Печать */
 @page{size:A4;margin:12mm}
@@ -120,14 +139,6 @@ body{
   .recipe{break-inside:avoid;page-break-inside:avoid;margin:0 0 10mm 0}
   .cover{page-break-after:always}
   .final{page-break-before:always}
-}
-
-/* Мелкая адаптация */
-@media (max-width:380px){
-  .cover-name{font-size:42px}
-  .recipe-title{font-size:22px}
-  .letter-content{font-size:18px}
-  .recipe-meta{flex-wrap:wrap}
 }
 </style>
 </head>
@@ -178,12 +189,16 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 1 -->
+<!-- РЕЦЕПТЫ -->
 <div class="recipe" id="recipe-1">
-  <div class="recipe-image"><img src="Image/brk_001.png" loading="lazy" alt="Яйца-пашот с авокадо и зеленью"></div>
+  <div class="recipe-image">
+    <img src="Image/brk_001.png" loading="lazy" alt="Яйца-пашот с авокадо и зеленью">
+  </div>
   <div class="recipe-content">
     <h3 class="recipe-title">Яйца-пашот с авокадо и зеленью</h3>
-    <div class="recipe-meta"><span>15 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">280 ккал</span></div>
+    <div class="recipe-meta">
+      <span>15 минут</span><span>•</span><span>1 порция</span><span>•</span><span>280 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Поддержка сердца</div><div class="benefit-tag">Полезные жиры</div></div>
     <div class="recipe-personal">Маргарита, этот завтрак идеально подходит для поддержки вашего сердца благодаря полезным жирам авокадо. Яйца дадут сытость до обеда, а зелень поможет пищеварению. Готовьте яйца всмятку — так они легче усваиваются.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -205,12 +220,15 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 2 -->
 <div class="recipe" id="recipe-2">
-  <div class="recipe-image"><img src="Image/brk_002.png" loading="lazy" alt="Тёплая гречневая каша с яйцом и зеленью"></div>
+  <div class="recipe-image">
+    <img src="Image/brk_002.png" loading="lazy" alt="Тёплая гречневая каша с яйцом и зеленью">
+  </div>
   <div class="recipe-content">
     <h3 class="recipe-title">Тёплая гречневая каша с яйцом и зеленью</h3>
-    <div class="recipe-meta"><span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">320 ккал</span></div>
+    <div class="recipe-meta">
+      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>320 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Поддержка ЖКТ</div><div class="benefit-tag">Клетчатка</div><div class="benefit-tag">Сытость</div></div>
     <div class="recipe-personal">Гречка — ваш помощник в борьбе с запорами и нормализации стула. Это блюдо особенно полезно для вашего ЖКТ. Добавляйте больше зелени — петрушка и укроп улучшат пищеварение.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -231,12 +249,15 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 3 -->
 <div class="recipe" id="recipe-3">
-  <div class="recipe-image"><img src="Image/brk_003.png" loading="lazy" alt="Омлет на пару с зеленью"></div>
+  <div class="recipe-image">
+    <img src="Image/brk_003.png" loading="lazy" alt="Омлет на пару с зеленью">
+  </div>
   <div class="recipe-content">
     <h3 class="recipe-title">Омлет на пару с зеленью</h3>
-    <div class="recipe-meta"><span>15 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">220 ккал</span></div>
+    <div class="recipe-meta">
+      <span>15 минут</span><span>•</span><span>1 порция</span><span>•</span><span>220 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Легкий белок</div><div class="benefit-tag">Щадящий для ЖКТ</div></div>
     <div class="recipe-personal">Нежный паровой омлет не раздражает желудок при вашем гастрите. Готовится быстро и даёт легкий белок на утро. Попробуйте добавить немного укропа — он поможет при вздутии.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -257,12 +278,13 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 4 -->
 <div class="recipe" id="recipe-4">
   <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Овощной суп с чечевицей</h3>
-    <div class="recipe-meta"><span>25 минут</span><span>•</span><span>2 порции</span><span>•</span><span class="recipe-calories">320 ккал</span></div>
+    <div class="recipe-meta">
+      <span>25 минут</span><span>•</span><span>2 порции</span><span>•</span><span>320 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Снижение холестерина</div><div class="benefit-tag">Поддержка ЖКТ</div><div class="benefit-tag">Противовоспалительное</div></div>
     <div class="recipe-personal">При вашем повышенном холестерине чечевица — отличный выбор. Она снижает холестерин и помогает работе кишечника. Куркума в супе обладает противовоспалительным действием для суставов.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -286,12 +308,13 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 5 -->
 <div class="recipe" id="recipe-5">
   <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Индейка с тушёной брокколи</h3>
-    <div class="recipe-meta"><span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">350 ккал</span></div>
+    <div class="recipe-meta">
+      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>350 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Диетическое мясо</div><div class="benefit-tag">Клетчатка</div><div class="benefit-tag">Энергия</div></div>
     <div class="recipe-personal">Маргарита, индейка — самое диетическое мясо для вашего сердца. Брокколи богата клетчаткой и поможет с проблемой запоров. Тушение — идеальный способ готовки при холецистите.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -313,12 +336,13 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 6 -->
 <div class="recipe" id="recipe-6">
   <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Рыба в фольге с зеленью</h3>
-    <div class="recipe-meta"><span>25 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">320 ккал</span></div>
+    <div class="recipe-meta">
+      <span>25 минут</span><span>•</span><span>1 порция</span><span>•</span><span>320 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Омега-3</div><div class="benefit-tag">Снижение ЛПНП</div><div class="benefit-tag">Поддержка сердца</div></div>
     <div class="recipe-personal">Рыба необходима для снижения вашего холестерина ЛПНП. Запекание в фольге сохраняет все полезные вещества. Лимон улучшит усвоение железа и придаст блюду свежесть.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -340,12 +364,13 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 7 -->
 <div class="recipe" id="recipe-7">
   <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Крем-суп из цветной капусты</h3>
-    <div class="recipe-meta"><span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">200 ккал</span></div>
+    <div class="recipe-meta">
+      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>200 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Легкий ужин</div><div class="benefit-tag">Поддержка ЖКТ</div><div class="benefit-tag">Улучшение сна</div></div>
     <div class="recipe-personal">Легкий ужин, который не нагрузит пищеварение перед сном. Цветная капуста мягко стимулирует работу кишечника. Такой суп поможет наладить ваш сон — не будет тяжести в желудке.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -366,12 +391,13 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 8 -->
 <div class="recipe" id="recipe-8">
   <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Тёплый салат с яйцом и брокколи</h3>
-    <div class="recipe-meta"><span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">220 ккал</span></div>
+    <div class="recipe-meta">
+      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>220 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Магний для сна</div><div class="benefit-tag">Триптофан</div><div class="benefit-tag">Легкий белок</div></div>
     <div class="recipe-personal">Этот салат даст вам магний из брокколи для улучшения сна. Яйцо содержит триптофан — предшественник мелатонина. Ешьте за 2–3 часа до сна для лучшего эффекта.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
@@ -392,17 +418,18 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТ 9 -->
 <div class="recipe" id="recipe-9">
   <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Яичница со шпинатом и зеленью</h3>
-    <div class="recipe-meta"><span>10 минут</span><span>•</span><span>1 порция</span><span>•</span><span class="recipe-calories">220 ккал</span></div>
+    <div class="recipe-meta">
+      <span>10 минут</span><span>•</span><span>1 порция</span><span>•</span><span>220 ккал</span>
+    </div>
     <div class="health-benefits"><div class="benefit-tag">Магний</div><div class="benefit-tag">Улучшение сна</div><div class="benefit-tag">Быстрый ужин</div></div>
     <div class="recipe-personal">Маргарита, шпинат богат магнием, который поможет с вашей проблемой частых пробуждений. Легкий белковый ужин не перегрузит пищеварение. Готовьте минимально — так сохраните больше пользы.</div>
     <div class="recipe-block"><h4>Ингредиенты</h4>
       <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="9"></span>Яйцы — 2 шт.</li>
+        <li><span class="ingredient-checkbox" data-recipe="9"></span>Яйца — 2 шт.</li>
         <li><span class="ingredient-checkbox" data-recipe="9"></span>Шпинат — горсть</li>
         <li><span class="ingredient-checkbox" data-recipe="9"></span>Зелень — по вкусу</li>
         <li><span class="ingredient-checkbox" data-recipe="9"></span>Оливковое масло — 1 ч.л.</li>
@@ -419,20 +446,44 @@ body{
   </div>
 </div>
 
-<!-- Финальная страница (премиум) -->
+<!-- Финальная страница - новый дизайн -->
 <div class="section final">
-  <div class="final-card">
-    <div class="final-mark">Wellness · Маргарита</div>
-    <div class="final-quote">Еда — это забота о себе,<br>которая возвращается здоровьем.</div>
-    <div class="final-divider"></div>
-    <div class="final-grid">
-      <div class="final-pill">Первый месяц</div>
-      <div class="final-pill">Новые привычки</div>
-      <div class="final-pill">Ваше здоровье</div>
+  <div class="final-stats">
+    <div class="stat-item">
+      <div class="stat-number">9</div>
+      <div class="stat-label">Рецептов</div>
     </div>
-    <div class="final-footer">
+    <div class="stat-item">
+      <div class="stat-number">30</div>
+      <div class="stat-label">Дней питания</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">1</div>
+      <div class="stat-label">Ваш месяц</div>
+    </div>
+  </div>
+  
+  <div class="final-message">
+    <h3>Вы прошли первый шаг</h3>
+    <p>Эти рецепты — основа вашего нового образа жизни. Продолжайте готовить с удовольствием, слушайте свой организм и помните: забота о себе начинается с тарелки.</p>
+  </div>
+  
+  <div class="cta-section">
+    <div class="cta-title">Получите свою персональную книгу рецептов</div>
+    <div class="cta-subtitle">Каждый рецепт подбирается индивидуально под ваше здоровье, предпочтения и цели</div>
+    <a href="https://wellnessbook.ru" class="cta-button">Получить свою книгу</a>
+    <div class="cta-features">
+      <div class="cta-feature">Анализ здоровья</div>
+      <div class="cta-feature">30 дней сопровождения</div>
+      <div class="cta-feature">Личный куратор</div>
+    </div>
+  </div>
+  
+  <div class="final-footer">
+    <div class="final-hashtag">#вашwellness</div>
+    <div class="final-signature">
       С заботой о вашем здоровье
-      <div class="final-sign">Доктор Светлана</div>
+      <span>Доктор Светлана</span>
     </div>
   </div>
 </div>
@@ -441,10 +492,14 @@ body{
 
 <!-- Поделиться -->
 <div class="share-button" onclick="shareRecipeBook()" aria-label="Поделиться">
-  <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09 .7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
 </div>
 
 <script>
+// Константы состояния
+const STATE_KEY = 'recipeBook_state_v3';
+
+// Навигация
 function toggleNav(){
   const navContent=document.getElementById('navContent');
   const navIcon=document.getElementById('navIcon');
@@ -454,28 +509,82 @@ function toggleNav(){
   navIcon.classList.toggle('active');
   toggle.setAttribute('aria-expanded',open?'true':'false');
 }
+
 function scrollToRecipe(recipeId){
-  const nav=document.getElementById('navContent');const icon=document.getElementById('navIcon');
-  nav.classList.remove('active');icon.classList.remove('active');document.getElementById('navToggle')?.setAttribute('aria-expanded','false');
-  const el=document.getElementById(recipeId);if(!el) return;
+  const nav=document.getElementById('navContent');
+  const icon=document.getElementById('navIcon');
+  nav.classList.remove('active');
+  icon.classList.remove('active');
+  document.getElementById('navToggle')?.setAttribute('aria-expanded','false');
+  const el=document.getElementById(recipeId);
+  if(!el) return;
   const y=el.getBoundingClientRect().top+window.pageYOffset;
   const offset=y-document.querySelector('.nav-header').offsetHeight;
   window.scrollTo({top:offset,behavior:'smooth'});
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  const t=document.getElementById('navToggle');
-  if(t){ t.addEventListener('click',toggleNav); t.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleNav(); } }); }
 
-  // Чекбоксы — простое сохранение в localStorage
-  function save(){const ids=[];document.querySelectorAll('.ingredient-checkbox.checked').forEach(cb=>{const rid=cb.dataset.recipe;const idx=Array.from(cb.parentElement.parentElement.children).indexOf(cb.parentElement);ids.push(`${rid}-${idx}`)});localStorage.setItem('recipeBook_ingredients',JSON.stringify(ids));}
-  function restore(){let raw=localStorage.getItem('recipeBook_ingredients');if(!raw) return;let ids=[];try{ids=JSON.parse(raw)}catch{};ids.forEach(id=>{const [rid,idx]=id.split('-');const list=document.querySelectorAll(`.ingredient-checkbox[data-recipe="${rid}"]`);if(list[idx]) list[idx].classList.add('checked');});}
-  document.querySelectorAll('.ingredient-checkbox').forEach(cb=>cb.addEventListener('click',function(e){e.stopPropagation();this.classList.toggle('checked');save();}));
-  restore();
+// Состояние чекбоксов
+function saveState(){
+  const state={ingredients:[]};
+  document.querySelectorAll('.ingredient-checkbox.checked').forEach(cb=>{
+    const recipeId=cb.dataset.recipe;
+    const index=Array.from(cb.parentElement.parentElement.children).indexOf(cb.parentElement);
+    state.ingredients.push(`${recipeId}-${index}`);
+  });
+  localStorage.setItem(STATE_KEY,JSON.stringify(state));
+}
+
+function restoreState(){
+  const savedRaw=localStorage.getItem(STATE_KEY);
+  if(!savedRaw) return;
+  try{
+    const state=JSON.parse(savedRaw);
+    (state.ingredients||[]).forEach(id=>{
+      const [rid,idx]=id.split('-');
+      const boxes=document.querySelectorAll(`.ingredient-checkbox[data-recipe="${rid}"]`);
+      if(boxes[idx]) boxes[idx].classList.add('checked');
+    });
+  }catch(e){}
+}
+
+// Инициализация
+document.addEventListener('DOMContentLoaded',()=>{
+  // Навигация
+  const t=document.getElementById('navToggle');
+  if(t){
+    t.addEventListener('click',toggleNav);
+    t.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        toggleNav();
+      }
+    });
+  }
+
+  // Чекбоксы
+  document.querySelectorAll('.ingredient-checkbox').forEach(cb=>{
+    cb.addEventListener('click',function(e){
+      e.stopPropagation();
+      this.classList.toggle('checked');
+      saveState();
+    });
+  });
+
+  // Восстановление состояния
+  restoreState();
 });
 
+// Поделиться
 function shareRecipeBook(){
-  if(navigator.share){navigator.share({title:'Моя книга рецептов',text:'Персональная книга рецептов для здорового питания',url:window.location.href}).catch(()=>{});}
-  else{navigator.clipboard.writeText(window.location.href).then(()=>alert('Ссылка скопирована!'));}
+  if(navigator.share){
+    navigator.share({
+      title:'Моя книга рецептов',
+      text:'Персональная книга рецептов для здорового питания',
+      url:window.location.href
+    }).catch(()=>{});
+  }else{
+    navigator.clipboard.writeText(window.location.href).then(()=>alert('Ссылка скопирована!'));
+  }
 }
 </script>
 
