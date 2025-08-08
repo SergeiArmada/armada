@@ -49,7 +49,7 @@ body {
     position: sticky;
     top: 0;
     background: white;
-    z-index: 100;
+    z-index: 10000; /* повысил приоритет поверх всего */
     border-bottom: 1px solid var(--accent-light);
     backdrop-filter: blur(10px);
     background: rgba(255,255,255,0.95);
@@ -891,6 +891,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
   injectAddToMenuButtons();
   attachImageFallbacks();
   restoreState();
+  // страховка: навешиваем обработчик на бургер, даже если inline-attr не сработал
+  const t = document.querySelector('.nav-toggle');
+  if (t && !t.dataset.bound){
+    t.addEventListener('click', toggleNav);
+    t.dataset.bound = '1';
+  }
 });
 </script>
 
