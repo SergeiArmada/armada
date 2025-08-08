@@ -116,53 +116,36 @@ body {
 .nav-item {
     display: flex;
     align-items: center;
-    padding: 12px 20px;
+    padding: 14px 20px;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(240, 232, 224, 0.5);
+}
+
+.nav-item:last-child {
+    border-bottom: none;
 }
 
 .nav-item:active {
     background: var(--bg-soft);
 }
 
-.nav-checkbox {
-    width: 20px;
-    height: 20px;
-    border: 1.5px solid var(--accent-soft);
-    border-radius: 4px;
-    margin-right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.nav-checkbox.checked {
-    background: var(--success);
-    border-color: var(--success);
-}
-
-.nav-checkbox.checked::after {
-    content: '✓';
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-}
-
 .nav-recipe-name {
     flex: 1;
     font-size: 15px;
     color: var(--text-main);
+    font-weight: 400;
 }
 
 .nav-badge {
     font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
     background: var(--accent-light);
     color: var(--secondary-warm);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-weight: 500;
 }
 
 /* Секции контента */
@@ -611,15 +594,17 @@ body {
 /* Таймер */
 .timer-widget {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
     background: white;
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 100;
+    border-radius: 20px;
+    padding: 12px 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    z-index: 99;
     display: none;
-    min-width: 150px;
+    min-width: 180px;
+    border: 2px solid var(--accent-soft);
 }
 
 .timer-widget.active {
@@ -627,11 +612,12 @@ body {
 }
 
 .timer-display {
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 28px;
+    font-weight: 600;
     color: var(--primary-warm);
     text-align: center;
     margin-bottom: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Mono', monospace;
 }
 
 .timer-controls {
@@ -641,12 +627,13 @@ body {
 }
 
 .timer-btn {
-    padding: 6px 12px;
+    padding: 8px 16px;
     background: var(--accent-soft);
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     color: white;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -723,47 +710,38 @@ body {
     <div class="nav-content" id="navContent">
         <div class="nav-list">
             <div class="nav-item" onclick="scrollToRecipe('recipe-1')">
-                <span class="nav-checkbox" data-recipe="1"></span>
                 <span class="nav-recipe-name">Яйца-пашот с авокадо</span>
                 <span class="nav-badge">Завтрак</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-2')">
-                <span class="nav-checkbox" data-recipe="2"></span>
                 <span class="nav-recipe-name">Гречневая каша с яйцом</span>
                 <span class="nav-badge">Завтрак</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-3')">
-                <span class="nav-checkbox" data-recipe="3"></span>
                 <span class="nav-recipe-name">Омлет на пару</span>
                 <span class="nav-badge">Завтрак</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-4')">
-                <span class="nav-checkbox" data-recipe="4"></span>
                 <span class="nav-recipe-name">Овощной суп с чечевицей</span>
                 <span class="nav-badge">Обед</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-5')">
-                <span class="nav-checkbox" data-recipe="5"></span>
                 <span class="nav-recipe-name">Индейка с брокколи</span>
                 <span class="nav-badge">Обед</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-6')">
-                <span class="nav-checkbox" data-recipe="6"></span>
                 <span class="nav-recipe-name">Рыба в фольге</span>
                 <span class="nav-badge">Обед</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-7')">
-                <span class="nav-checkbox" data-recipe="7"></span>
                 <span class="nav-recipe-name">Крем-суп из капусты</span>
                 <span class="nav-badge">Ужин</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-8')">
-                <span class="nav-checkbox" data-recipe="8"></span>
                 <span class="nav-recipe-name">Салат с яйцом</span>
                 <span class="nav-badge">Ужин</span>
             </div>
             <div class="nav-item" onclick="scrollToRecipe('recipe-9')">
-                <span class="nav-checkbox" data-recipe="9"></span>
                 <span class="nav-recipe-name">Яичница со шпинатом</span>
                 <span class="nav-badge">Ужин</span>
             </div>
