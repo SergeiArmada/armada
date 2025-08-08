@@ -548,6 +548,134 @@ body {
     fill: white;
 }
 
+/* Кнопка поделиться */
+.share-button {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.share-button:active {
+    transform: scale(0.95);
+}
+
+.share-button svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+/* Счетчик калорий */
+.calories-counter {
+    position: fixed;
+    bottom: 140px;
+    right: 20px;
+    background: white;
+    border-radius: 25px;
+    padding: 10px 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+    font-size: 14px;
+    color: var(--primary-warm);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calories-counter.hidden {
+    display: none;
+}
+
+.calories-icon {
+    width: 20px;
+    height: 20px;
+    background: var(--energy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+/* Таймер */
+.timer-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+    display: none;
+    min-width: 150px;
+}
+
+.timer-widget.active {
+    display: block;
+}
+
+.timer-display {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--primary-warm);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.timer-btn {
+    padding: 6px 12px;
+    background: var(--accent-soft);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.timer-btn:active {
+    transform: scale(0.95);
+}
+
+.timer-btn.stop {
+    background: #e74c3c;
+}
+
+/* Кнопка таймера в рецепте */
+.timer-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-light);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: var(--secondary-warm);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.timer-button:active {
+    transform: scale(0.95);
+}
+
 /* Адаптация под маленькие экраны */
 @media screen and (max-width: 380px) {
     .cover-name {
@@ -683,7 +811,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>280 ккал</span>
+            <span class="recipe-calories" data-calories="280">280 ккал</span>
+            <span class="timer-button" onclick="startTimer(15)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Поддержка сердца</div>
@@ -726,7 +855,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>320 ккал</span>
+            <span class="recipe-calories" data-calories="320">320 ккал</span>
+            <span class="timer-button" onclick="startTimer(20)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Поддержка ЖКТ</div>
@@ -769,7 +899,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>220 ккал</span>
+            <span class="recipe-calories" data-calories="220">220 ккал</span>
+            <span class="timer-button" onclick="startTimer(15)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Легкий белок</div>
@@ -810,7 +941,8 @@ body {
             <span>•</span>
             <span>2 порции</span>
             <span>•</span>
-            <span>320 ккал</span>
+            <span class="recipe-calories" data-calories="320">320 ккал</span>
+            <span class="timer-button" onclick="startTimer(25)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Снижение холестерина</div>
@@ -855,7 +987,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>350 ккал</span>
+            <span class="recipe-calories" data-calories="350">350 ккал</span>
+            <span class="timer-button" onclick="startTimer(20)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Диетическое мясо</div>
@@ -898,7 +1031,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>320 ккал</span>
+            <span class="recipe-calories" data-calories="320">320 ккал</span>
+            <span class="timer-button" onclick="startTimer(25)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Омега-3</div>
@@ -941,7 +1075,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>200 ккал</span>
+            <span class="recipe-calories" data-calories="200">200 ккал</span>
+            <span class="timer-button" onclick="startTimer(20)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Легкий ужин</div>
@@ -983,7 +1118,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>220 ккал</span>
+            <span class="recipe-calories" data-calories="220">220 ккал</span>
+            <span class="timer-button" onclick="startTimer(20)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Магний для сна</div>
@@ -1025,7 +1161,8 @@ body {
             <span>•</span>
             <span>1 порция</span>
             <span>•</span>
-            <span>220 ккал</span>
+            <span class="recipe-calories" data-calories="220">220 ккал</span>
+            <span class="timer-button" onclick="startTimer(10)">⏱ Таймер</span>
         </div>
         <div class="health-benefits">
             <div class="benefit-tag">Магний</div>
@@ -1091,6 +1228,28 @@ body {
     </svg>
 </div>
 
+<!-- Кнопка поделиться -->
+<div class="share-button" onclick="shareRecipeBook()">
+    <svg viewBox="0 0 24 24">
+        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+    </svg>
+</div>
+
+<!-- Счетчик калорий -->
+<div class="calories-counter hidden" id="caloriesCounter">
+    <div class="calories-icon">🔥</div>
+    <span id="caloriesText">0 ккал</span>
+</div>
+
+<!-- Таймер -->
+<div class="timer-widget" id="timerWidget">
+    <div class="timer-display" id="timerDisplay">00:00</div>
+    <div class="timer-controls">
+        <button class="timer-btn" onclick="pauseTimer()">Пауза</button>
+        <button class="timer-btn stop" onclick="stopTimer()">Стоп</button>
+    </div>
+</div>
+
 <script>
 // Навигация
 function toggleNav() {
@@ -1113,6 +1272,21 @@ function scrollToRecipe(recipeId) {
     });
 }
 
+// Счетчик калорий
+let totalCalories = 0;
+
+function updateCaloriesCounter() {
+    const counter = document.getElementById('caloriesCounter');
+    const text = document.getElementById('caloriesText');
+    
+    if (totalCalories > 0) {
+        counter.classList.remove('hidden');
+        text.textContent = `${totalCalories} ккал`;
+    } else {
+        counter.classList.add('hidden');
+    }
+}
+
 // Чекбоксы в навигации
 document.querySelectorAll('.nav-checkbox').forEach(checkbox => {
     checkbox.addEventListener('click', function(e) {
@@ -1122,6 +1296,19 @@ document.querySelectorAll('.nav-checkbox').forEach(checkbox => {
         // Синхронизация с чекбоксами ингредиентов
         const recipeId = this.dataset.recipe;
         const recipeChecked = this.classList.contains('checked');
+        
+        // Обновление счетчика калорий
+        const recipeElement = document.querySelector(`#recipe-${recipeId} .recipe-calories`);
+        if (recipeElement) {
+            const calories = parseInt(recipeElement.dataset.calories);
+            if (recipeChecked) {
+                totalCalories += calories;
+            } else {
+                totalCalories -= calories;
+            }
+            updateCaloriesCounter();
+        }
+        
         document.querySelectorAll(`.ingredient-checkbox[data-recipe="${recipeId}"]`).forEach(ingCheckbox => {
             if (recipeChecked) {
                 ingCheckbox.classList.add('checked');
@@ -1146,14 +1333,104 @@ document.querySelectorAll('.ingredient-checkbox').forEach(checkbox => {
         // Обновление навигационного чекбокса
         const navCheckbox = document.querySelector(`.nav-checkbox[data-recipe="${recipeId}"]`);
         if (navCheckbox) {
+            const wasChecked = navCheckbox.classList.contains('checked');
             if (checkedIngredients.length === allIngredients.length) {
-                navCheckbox.classList.add('checked');
+                if (!wasChecked) {
+                    navCheckbox.classList.add('checked');
+                    // Добавляем калории
+                    const recipeElement = document.querySelector(`#recipe-${recipeId} .recipe-calories`);
+                    if (recipeElement) {
+                        totalCalories += parseInt(recipeElement.dataset.calories);
+                        updateCaloriesCounter();
+                    }
+                }
             } else {
-                navCheckbox.classList.remove('checked');
+                if (wasChecked) {
+                    navCheckbox.classList.remove('checked');
+                    // Убираем калории
+                    const recipeElement = document.querySelector(`#recipe-${recipeId} .recipe-calories`);
+                    if (recipeElement) {
+                        totalCalories -= parseInt(recipeElement.dataset.calories);
+                        updateCaloriesCounter();
+                    }
+                }
             }
         }
     });
 });
+
+// Таймер
+let timerInterval;
+let timerSeconds = 0;
+let timerPaused = false;
+
+function startTimer(minutes) {
+    stopTimer(); // Останавливаем предыдущий таймер если есть
+    
+    timerSeconds = minutes * 60;
+    const widget = document.getElementById('timerWidget');
+    widget.classList.add('active');
+    
+    updateTimerDisplay();
+    
+    timerInterval = setInterval(() => {
+        if (!timerPaused && timerSeconds > 0) {
+            timerSeconds--;
+            updateTimerDisplay();
+            
+            if (timerSeconds === 0) {
+                // Таймер закончился
+                playTimerSound();
+                alert('Время готовки истекло!');
+                stopTimer();
+            }
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const display = document.getElementById('timerDisplay');
+    const minutes = Math.floor(timerSeconds / 60);
+    const seconds = timerSeconds % 60;
+    display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function pauseTimer() {
+    timerPaused = !timerPaused;
+    const btn = event.target;
+    btn.textContent = timerPaused ? 'Продолжить' : 'Пауза';
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timerSeconds = 0;
+    timerPaused = false;
+    const widget = document.getElementById('timerWidget');
+    widget.classList.remove('active');
+}
+
+function playTimerSound() {
+    // Вибрация на мобильных устройствах
+    if (navigator.vibrate) {
+        navigator.vibrate([200, 100, 200, 100, 200]);
+    }
+}
+
+// Кнопка поделиться
+function shareRecipeBook() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Моя книга рецептов',
+            text: 'Персональная книга рецептов для здорового питания',
+            url: window.location.href
+        }).catch(err => console.log('Ошибка при попытке поделиться', err));
+    } else {
+        // Копируем ссылку в буфер обмена
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Ссылка скопирована!');
+        });
+    }
+}
 
 // Кнопка наверх
 window.addEventListener('scroll', function() {
@@ -1169,7 +1446,8 @@ window.addEventListener('scroll', function() {
 function saveCheckboxState() {
     const checkedItems = {
         nav: [],
-        ingredients: []
+        ingredients: [],
+        calories: totalCalories
     };
     
     document.querySelectorAll('.nav-checkbox.checked').forEach(cb => {
@@ -1191,16 +1469,22 @@ function restoreCheckboxState() {
     if (saved) {
         const checkedItems = JSON.parse(saved);
         
+        // Восстанавливаем калории
+        totalCalories = checkedItems.calories || 0;
+        updateCaloriesCounter();
+        
         checkedItems.nav.forEach(recipeId => {
             const checkbox = document.querySelector(`.nav-checkbox[data-recipe="${recipeId}"]`);
             if (checkbox) checkbox.classList.add('checked');
         });
         
-        checkedItems.ingredients.forEach(id => {
-            const [recipeId, index] = id.split('-');
-            const checkboxes = document.querySelectorAll(`.ingredient-checkbox[data-recipe="${recipeId}"]`);
-            if (checkboxes[index]) checkboxes[index].classList.add('checked');
-        });
+        if (checkedItems.ingredients) {
+            checkedItems.ingredients.forEach(id => {
+                const [recipeId, index] = id.split('-');
+                const checkboxes = document.querySelectorAll(`.ingredient-checkbox[data-recipe="${recipeId}"]`);
+                if (checkboxes[index]) checkboxes[index].classList.add('checked');
+            });
+        }
     }
 }
 
