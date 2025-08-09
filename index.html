@@ -62,7 +62,8 @@ body{
 .letter-signature-name{font-family:'Brush Script MT',cursive;font-size:28px;color:var(--primary-warm);margin-top:10px;font-weight:300}
 
 /* Рецепты */
-.recipe{padding:0;border-bottom:1px solid var(--accent-light)}
+.recipe{padding:0;border-bottom:2px solid var(--accent-light);margin-bottom:2px}
+.recipe:last-child{border-bottom:none}
 .recipe-image{width:100%;height:220px;position:relative;background:repeating-linear-gradient(45deg,#f5f0ea,#f5f0ea 10px,#e8ddd5 10px,#e8ddd5 20px);overflow:hidden}
 .recipe-image img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -167,6 +168,8 @@ body{
     <div class="cover-for">для</div>
     <div class="cover-name">Маргариты</div>
   </div>
+  
+  <div style="width: 60px; height: 1px; background: var(--accent-soft); margin: 0 auto; opacity: 0.5;"></div>
   
   <div class="cover-dedication">
     <div class="cover-dedication-line">Собрана с любовью</div>
@@ -485,9 +488,8 @@ body{
   </div>
   
   <div class="final-footer">
-    <div class="final-hashtag">#вашwellness</div>
     <div class="final-signature">
-      С заботой о вашем здоровье
+      С заботой о вашем здоровье,
       <span>Доктор Света</span>
     </div>
   </div>
