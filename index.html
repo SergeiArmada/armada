@@ -798,10 +798,9 @@ body{
   </div>
   
   <div class="final-footer">
-    <div class="final-hashtag">#вашwellness</div>
     <div class="final-signature">
       С заботой о вашем здоровье,
-      <span>Доктор Светлана</span>
+      <span>Доктор Света</span>
     </div>
   </div>
 </div>
@@ -831,9 +830,9 @@ function scrollToRecipe(recipeId){
   document.getElementById('navToggle')?.setAttribute('aria-expanded','false');
   const el=document.getElementById(recipeId);
   if(!el) return;
-  const y=el.getBoundingClientRect().top+window.pageYOffset;
-  const offset=y-document.querySelector('.nav-header').offsetHeight;
-  window.scrollTo({top:offset,behavior:'smooth'});
+  const headerHeight=document.querySelector('.nav-header').offsetHeight;
+  const y=el.offsetTop-headerHeight;
+  window.scrollTo({top:y,behavior:'smooth'});
 }
 
 // Состояние чекбоксов
