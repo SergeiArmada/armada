@@ -18,7 +18,7 @@ body{
 }
 .container{max-width:450px;margin:0 auto;background:#fff;min-height:100vh}
 
-/* Шапка/навигация */
+/* Навигация */
 .nav-header{
   position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
   border-bottom:1px solid var(--accent-light);z-index:10001;
@@ -48,9 +48,6 @@ body{
 .cover-subtitle{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:300;color:var(--secondary-warm);margin-bottom:8px;letter-spacing:0.5px}
 .cover-for{font-family:Georgia,'Times New Roman',serif;font-size:16px;font-style:italic;color:var(--text-soft);margin-bottom:8px}
 .cover-name{font-family:Georgia,'Times New Roman',serif;font-size:52px;font-weight:300;color:var(--primary-warm);margin-bottom:40px;line-height:1;letter-spacing:-1px}
-.cover-focus{margin:40px 0;padding:20px;border-top:1px solid rgba(139,116,104,0.2);border-bottom:1px solid rgba(139,116,104,0.2)}
-.cover-focus-title{font-size:14px;color:var(--text-soft);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.cover-focus-list{font-size:16px;color:var(--primary-warm);line-height:1.8;font-style:italic}
 .cover-dedication{margin-bottom:60px}
 .cover-dedication-line{font-size:15px;color:var(--text-soft);line-height:1.6;letter-spacing:0.3px}
 .cover-date{font-size:14px;color:#c5b4a8;letter-spacing:1.5px;text-transform:uppercase}
@@ -93,18 +90,12 @@ body{
 .steps-list li{counter-increment:step-counter;padding-left:34px;position:relative;margin-bottom:10px;font-size:16px;line-height:1.5;color:var(--text-main);display:flex;align-items:flex-start}
 .steps-list li::before{content:counter(step-counter);position:absolute;left:0;top:2px;width:22px;height:22px;background:linear-gradient(135deg,var(--accent-soft),#c2a491);color:#fff;border-radius:5px;font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center}
 
-/* Финал - новый дизайн */
+/* Финал */
 .final{padding:60px 20px 40px;background:linear-gradient(135deg,#fff,var(--bg-soft))}
 
 .final-message{text-align:center;margin-bottom:50px}
 .final-message h3{font-family:Georgia,'Times New Roman',serif;font-size:26px;font-weight:300;color:var(--primary-warm);margin-bottom:20px;line-height:1.3}
-.final-message p{font-size:16px;line-height:1.7;color:#6a6a6a;max-width:380px;margin:0 auto}
-
-.goals-summary{background:#fff;border-radius:12px;padding:30px;margin:40px 0;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
-.goals-summary h4{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text-soft);margin-bottom:20px;text-align:center}
-.goals-list{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.goal-item{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text-main)}
-.goal-icon{width:32px;height:32px;background:var(--accent-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.final-message p{font-size:16px;line-height:1.7;color:#6a6a6a;max-width:380px;margin:0 auto 15px}
 
 .share-section{text-align:center;margin:50px 0}
 .share-prompt{font-size:15px;color:var(--text-soft);margin-bottom:24px}
@@ -118,15 +109,11 @@ body{
 .final-signature{font-size:12px;color:var(--text-soft)}
 .final-signature span{display:block;font-family:Georgia,'Times New Roman',serif;font-size:18px;color:var(--secondary-warm);font-style:italic;margin-top:8px}
 
-/* Убираем плавающую кнопку */
-.share-button{display:none}
-
-/* Мелкая адаптация */
+/* Адаптация */
 @media (max-width:380px){
   .cover-name{font-size:42px}
   .recipe-title{font-size:22px}
   .letter-content{font-size:18px}
-  .goals-list{grid-template-columns:1fr}
 }
 
 /* Печать */
@@ -134,7 +121,7 @@ body{
 @media print{
   body{background:#fff!important}
   .container{max-width:none;background:#fff}
-  .nav-header,.share-button{display:none!important}
+  .nav-header{display:none!important}
   .section{padding:0;border:0}
   .recipe{break-inside:avoid;page-break-inside:avoid;margin:0 0 10mm 0}
   .cover{page-break-after:always}
@@ -154,18 +141,54 @@ body{
   </button>
   <div class="nav-content" id="navContent">
     <div class="nav-list">
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-1')"><span class="nav-recipe-name">Яйца-пашот с авокадо</span><span class="nav-badge">Завтрак</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-2')"><span class="nav-recipe-name">Гречневая каша с яйцом</span><span class="nav-badge">Завтрак</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-3')"><span class="nav-recipe-name">Омлет на пару</span><span class="nav-badge">Завтрак</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-4')"><span class="nav-recipe-name">Творожная запеканка</span><span class="nav-badge">Завтрак</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-5')"><span class="nav-recipe-name">Овощной суп с чечевицей</span><span class="nav-badge">Обед</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-6')"><span class="nav-recipe-name">Индейка с брокколи</span><span class="nav-badge">Обед</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-7')"><span class="nav-recipe-name">Рыба в фольге</span><span class="nav-badge">Обед</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-8')"><span class="nav-recipe-name">Куриное филе с овощами</span><span class="nav-badge">Обед</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-9')"><span class="nav-recipe-name">Крем-суп из капусты</span><span class="nav-badge">Ужин</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-10')"><span class="nav-recipe-name">Салат с яйцом</span><span class="nav-badge">Ужин</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-11')"><span class="nav-recipe-name">Яичница со шпинатом</span><span class="nav-badge">Ужин</span></div>
-      <div class="nav-item" role="button" tabindex="0" onclick="scrollToRecipe('recipe-12')"><span class="nav-recipe-name">Овощное рагу</span><span class="nav-badge">Ужин</span></div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-1')">
+        <span class="nav-recipe-name">Яйца-пашот с авокадо и зеленью</span>
+        <span class="nav-badge">Завтрак</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-2')">
+        <span class="nav-recipe-name">Тёплая гречневая каша с яйцом и зеленью</span>
+        <span class="nav-badge">Завтрак</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-3')">
+        <span class="nav-recipe-name">Яйцо всмятку с гречкой и маслом</span>
+        <span class="nav-badge">Завтрак</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-4')">
+        <span class="nav-recipe-name">Омлет на пару с зеленью</span>
+        <span class="nav-badge">Завтрак</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-5')">
+        <span class="nav-recipe-name">Овощной суп с чечевицей</span>
+        <span class="nav-badge">Обед</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-6')">
+        <span class="nav-recipe-name">Индейка с тушёной брокколи</span>
+        <span class="nav-badge">Обед</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-7')">
+        <span class="nav-recipe-name">Рыба в фольге с зеленью</span>
+        <span class="nav-badge">Обед</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-8')">
+        <span class="nav-recipe-name">Гречка с тушёными овощами и маслом гхи</span>
+        <span class="nav-badge">Обед</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-9')">
+        <span class="nav-recipe-name">Рыба с запечённой тыквой</span>
+        <span class="nav-badge">Ужин</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-10')">
+        <span class="nav-recipe-name">Запечённая тыква с корицей</span>
+        <span class="nav-badge">Ужин</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-11')">
+        <span class="nav-recipe-name">Тёплый салат с яйцом и брокколи</span>
+        <span class="nav-badge">Ужин</span>
+      </div>
+      <div class="nav-item" onclick="scrollToRecipe('recipe-12')">
+        <span class="nav-recipe-name">Яичница со шпинатом и зеленью</span>
+        <span class="nav-badge">Ужин</span>
+      </div>
     </div>
   </div>
 </div>
@@ -185,17 +208,17 @@ body{
     <div class="cover-dedication-line">для вашего здоровья и спокойствия</div>
   </div>
   
-  <div class="cover-date">Июнь 2025</div>
+  <div class="cover-date">Август 2025</div>
 </div>
 
 <!-- Письмо -->
 <div class="section letter">
   <div class="letter-content">
     <p>Дорогая Маргарита,</p>
-    <p>Я знаю, что сейчас сон прерывистый, давление скачет, а готовить для себя одной бывает лень.</p>
-    <p>Эти 12 рецептов подобраны так, чтобы помочь именно с этими проблемами. Завтраки дадут энергию после беспокойной ночи. Обеды — легкие, но сытные, не дадут давлению подскочить. А ужины подготовят организм ко сну — без тяжести в желудке.</p>
-    <p>В вашем плане на месяц я отметила, какие блюда когда лучше готовить. Но следуйте интуиции — если хочется омлет на ужин, готовьте омлет.</p>
-    <p>Помните: даже простой салат, приготовленный с заботой о себе — это уже победа.</p>
+    <p>Я знаю, что сейчас сон прерывистый, вы часто просыпаетесь ночью, давление нестабильное, а запоры добавляют дискомфорт. Готовить для себя одной иногда не хочется, особенно когда список ограничений кажется бесконечным.</p>
+    <p>Эти 12 рецептов подобраны так, чтобы помочь именно с этими проблемами. Завтраки дадут энергию после беспокойной ночи. Обеды — легкие, но сытные, не вызовут тяжести. Ужины подготовят организм ко сну, дадут магний и триптофан для спокойной ночи.</p>
+    <p>В вашем плане на месяц я отметила, какие блюда когда лучше готовить. Но следуйте интуиции — если хочется омлет на ужин, готовьте омлет. Ваш организм лучше знает, что ему нужно.</p>
+    <p>Помните: каждое блюдо здесь — это забота о вашем сердце, почках, пищеварении. Готовьте с удовольствием, не спешите. И если не хочется готовить — это тоже нормально.</p>
     <div class="letter-signature">
       <div class="letter-signature-text">С заботой о вашем здоровье,</div>
       <div class="letter-signature-name">Доктор Света</div>
@@ -203,23 +226,31 @@ body{
   </div>
 </div>
 
-<!-- РЕЦЕПТЫ -->
-<!-- Рецепт 1: Завтрак -->
-<div class="recipe" id="recipe-1">
-  <div class="recipe-image">
-    <img src="Image/brk_001.jpeg" loading="lazy" alt="Яйца-пашот с авокадо и зеленью">
-  </div>
+<!-- ЗАВТРАК 1 -->
+<div class="section recipe" id="recipe-1">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Яйца-пашот с авокадо и зеленью</h3>
     <div class="recipe-meta">
-      <span>15 минут</span><span>•</span><span>1 порция</span><span>•</span><span>280 ккал</span>
+      <span>15 мин</span>
+      <span>•</span>
+      <span>1 порция</span>
+      <span>•</span>
+      <span>280 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Белок для энергии</div>
-      <div class="benefit-tag">Магний для сна</div>
+      <span class="benefit-tag">Калий для давления</span>
+      <span class="benefit-tag">Поддержка сердца</span>
+      <span class="benefit-tag">Легкий белок</span>
     </div>
-    <div class="recipe-personal">Триптофан из яиц поможет выработке мелатонина к вечеру. Готовьте на пару или всмятку — так белок усваивается легче. В вашем плане это блюдо отмечено на первую неделю.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Авокадо содержит калий, который поможет снизить давление при вашей гипертонии. Яйца-пашот легче усваиваются, чем жареные, что важно при гастрите.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
         <li><span class="ingredient-checkbox" data-recipe="1"></span>Яйцо — 2 шт.</li>
         <li><span class="ingredient-checkbox" data-recipe="1"></span>Авокадо — ½ шт.</li>
@@ -228,7 +259,9 @@ body{
         <li><span class="ingredient-checkbox" data-recipe="1"></span>Лимонный сок — по вкусу</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
         <li>Сварите яйца-пашот в подкисленной воде.</li>
         <li>Очистите авокадо, нарежьте ломтиками и сбрызните лимонным соком.</li>
@@ -238,22 +271,31 @@ body{
   </div>
 </div>
 
-<!-- Рецепт 2: Завтрак -->
-<div class="recipe" id="recipe-2">
-  <div class="recipe-image">
-    <img src="Image/brk_003.jpeg" loading="lazy" alt="Тёплая гречневая каша с яйцом и зеленью">
-  </div>
+<!-- ЗАВТРАК 2 -->
+<div class="section recipe" id="recipe-2">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Тёплая гречневая каша с яйцом и зеленью</h3>
     <div class="recipe-meta">
-      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>320 ккал</span>
+      <span>20 мин</span>
+      <span>•</span>
+      <span>1 порция</span>
+      <span>•</span>
+      <span>320 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Клетчатка для ЖКТ</div>
-      <div class="benefit-tag">Железо для крови</div>
+      <span class="benefit-tag">Магний для сна</span>
+      <span class="benefit-tag">Поддержка ЖКТ</span>
+      <span class="benefit-tag">Клетчатка</span>
     </div>
-    <div class="recipe-personal">Гречка — ваш помощник в борьбе с запорами. Клетчатка мягко стимулирует работу кишечника, а железо поддержит гемоглобин. Добавляйте больше зелени для усиления эффекта.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Гречка богата магнием — именно он поможет с вашей проблемой частых пробуждений ночью. Добавьте больше укропа — он улучшит работу почек при пиелонефрите.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
         <li><span class="ingredient-checkbox" data-recipe="2"></span>Гречка — 3 ст.л.</li>
         <li><span class="ingredient-checkbox" data-recipe="2"></span>Яйцо — 1 шт.</li>
@@ -261,7 +303,9 @@ body{
         <li><span class="ingredient-checkbox" data-recipe="2"></span>Соль — щепотка</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
         <li>Отварите промытую гречку до мягкости (15 минут).</li>
         <li>Сварите яйцо всмятку или вкрутую.</li>
@@ -271,88 +315,116 @@ body{
   </div>
 </div>
 
-<!-- Рецепт 3: Завтрак -->
-<div class="recipe" id="recipe-3">
-  <div class="recipe-image">
-    <img src="Image/brk_010.jpeg" loading="lazy" alt="Омлет на пару с зеленью">
+<!-- ЗАВТРАК 3 -->
+<div class="section recipe" id="recipe-3">
+  <div class="recipe-image"></div>
+  <div class="recipe-content">
+    <h3 class="recipe-title">Яйцо всмятку с гречкой и маслом</h3>
+    <div class="recipe-meta">
+      <span>15 мин</span>
+      <span>•</span>
+      <span>1 порция</span>
+      <span>•</span>
+      <span>300 ккал</span>
+    </div>
+    
+    <div class="health-benefits">
+      <span class="benefit-tag">Легкое усвоение</span>
+      <span class="benefit-tag">Поддержка сердца</span>
+    </div>
+    
+    <div class="recipe-personal">
+      Простой завтрак, который не нагрузит пищеварение. Масло гхи легче усваивается при холецистите, чем обычное сливочное.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-checkbox" data-recipe="3"></span>Яйцо — 1 шт.</li>
+        <li><span class="ingredient-checkbox" data-recipe="3"></span>Отварная гречка — 3 ст.л.</li>
+        <li><span class="ingredient-checkbox" data-recipe="3"></span>Масло (оливковое или гхи) — 1 ч.л.</li>
+      </ul>
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
+      <ol class="steps-list">
+        <li>Сварите яйцо всмятку 5 минут после закипания.</li>
+        <li>Разогрейте готовую гречку, добавьте масло.</li>
+        <li>Подавайте гречку с яйцом.</li>
+      </ol>
+    </div>
   </div>
+</div>
+
+<!-- ЗАВТРАК 4 -->
+<div class="section recipe" id="recipe-4">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Омлет на пару с зеленью</h3>
     <div class="recipe-meta">
-      <span>15 минут</span><span>•</span><span>1 порция</span><span>•</span><span>220 ккал</span>
+      <span>15 мин</span>
+      <span>•</span>
+      <span>1 порция</span>
+      <span>•</span>
+      <span>220 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Легкий белок</div>
-      <div class="benefit-tag">Щадящий для ЖКТ</div>
+      <span class="benefit-tag">Щадящий для ЖКТ</span>
+      <span class="benefit-tag">Белок без жира</span>
     </div>
-    <div class="recipe-personal">Маргарита, паровой омлет идеален для спокойного утра. Легкое усвоение не создаст тяжести, а нежная текстура не раздражает желудок при гастрите.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Приготовление на пару — самый щадящий способ при вашем гастрите. Белок из яиц даст энергию без тяжести в желудке.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="3"></span>Яйцо — 2 шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="3"></span>Молоко — 2 ст.л.</li>
-        <li><span class="ingredient-checkbox" data-recipe="3"></span>Соль — щепотка</li>
-        <li><span class="ingredient-checkbox" data-recipe="3"></span>Свежая зелень — 1 ст.л.</li>
+        <li><span class="ingredient-checkbox" data-recipe="4"></span>Яйцо — 2 шт.</li>
+        <li><span class="ingredient-checkbox" data-recipe="4"></span>Молоко — 2 ст.л.</li>
+        <li><span class="ingredient-checkbox" data-recipe="4"></span>Соль — щепотка</li>
+        <li><span class="ingredient-checkbox" data-recipe="4"></span>Свежая зелень — 1 ст.л.</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
         <li>Взбейте яйца с молоком и солью.</li>
         <li>Добавьте рубленую зелень.</li>
-        <li>Перелейте смесь в форму и готовьте на пару 10–12 минут.</li>
+        <li>Перелейте смесь в форму и готовьте на пару 10-12 минут.</li>
       </ol>
     </div>
   </div>
 </div>
 
-<!-- Рецепт 4: Завтрак -->
-<div class="recipe" id="recipe-4">
-  <div class="recipe-image">
-    <img src="Image/brk_012.jpeg" loading="lazy" alt="Творожная запеканка">
-  </div>
-  <div class="recipe-content">
-    <h3 class="recipe-title">Творожная запеканка без муки</h3>
-    <div class="recipe-meta">
-      <span>30 минут</span><span>•</span><span>2 порции</span><span>•</span><span>180 ккал</span>
-    </div>
-    <div class="health-benefits">
-      <div class="benefit-tag">Кальций для сна</div>
-      <div class="benefit-tag">Белок для сытости</div>
-    </div>
-    <div class="recipe-personal">Кальций из творога поможет с засыпанием, а легкий белок даст сытость до обеда. Готовьте двойную порцию — вторую можно съесть завтра.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
-      <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="4"></span>Творог 5% — 200 г</li>
-        <li><span class="ingredient-checkbox" data-recipe="4"></span>Яйцо — 1 шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="4"></span>Ванилин — щепотка</li>
-        <li><span class="ingredient-checkbox" data-recipe="4"></span>Подсластитель — по вкусу</li>
-      </ul>
-    </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
-      <ol class="steps-list">
-        <li>Смешайте творог с яйцом и ванилином.</li>
-        <li>Добавьте подсластитель по вкусу.</li>
-        <li>Выложите в форму и запекайте 25 минут при 180°C.</li>
-      </ol>
-    </div>
-  </div>
-</div>
-
-<!-- Рецепт 5: Обед -->
-<div class="recipe" id="recipe-5">
-  <div class="recipe-image">
-    <img src="Image/lch_002.jpeg" loading="lazy" alt="Овощной суп с чечевицей">
-  </div>
+<!-- ОБЕД 1 -->
+<div class="section recipe" id="recipe-5">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Овощной суп с чечевицей</h3>
     <div class="recipe-meta">
-      <span>25 минут</span><span>•</span><span>2 порции</span><span>•</span><span>320 ккал</span>
+      <span>25 мин</span>
+      <span>•</span>
+      <span>2 порции</span>
+      <span>•</span>
+      <span>320 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Калий для давления</div>
-      <div class="benefit-tag">Клетчатка для ЖКТ</div>
+      <span class="benefit-tag">Снижение холестерина</span>
+      <span class="benefit-tag">Клетчатка для ЖКТ</span>
+      <span class="benefit-tag">Куркума для суставов</span>
     </div>
-    <div class="recipe-personal">Калий из овощей мягко снижает давление, а чечевица даст длительную сытость. Теплый суп создает ощущение заботы — важно, когда готовишь для себя.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Чечевица снижает холестерин ЛПНП, который у вас повышен. Куркума в супе обладает противовоспалительным действием и поможет суставам.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
         <li><span class="ingredient-checkbox" data-recipe="5"></span>Чечевица — 2 ст.л.</li>
         <li><span class="ingredient-checkbox" data-recipe="5"></span>Морковь — 1 шт.</li>
@@ -363,32 +435,43 @@ body{
         <li><span class="ingredient-checkbox" data-recipe="5"></span>Вода — 1 л</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
         <li>Обжарьте лук и морковь в масле 2 минуты.</li>
         <li>Добавьте кубики кабачка, чечевицу и воду.</li>
-        <li>Приправьте специями, варите 20–25 минут до мягкости.</li>
+        <li>Приправьте специями, варите 20-25 минут до мягкости.</li>
       </ol>
     </div>
   </div>
 </div>
 
-<!-- Рецепт 6: Обед -->
-<div class="recipe" id="recipe-6">
-  <div class="recipe-image">
-    <img src="Image/lch_003.jpeg" loading="lazy" alt="Индейка с тушёной брокколи">
-  </div>
+<!-- ОБЕД 2 -->
+<div class="section recipe" id="recipe-6">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Индейка с тушёной брокколи</h3>
     <div class="recipe-meta">
-      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>350 ккал</span>
+      <span>20 мин</span>
+      <span>•</span>
+      <span>1 порция</span>
+      <span>•</span>
+      <span>350 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Диетическое мясо</div>
-      <div class="benefit-tag">Магний для сна</div>
+      <span class="benefit-tag">Диетическое мясо</span>
+      <span class="benefit-tag">Клетчатка от запоров</span>
+      <span class="benefit-tag">Энергия</span>
     </div>
-    <div class="recipe-personal">Индейка — самое легкое мясо для вашего давления. Брокколи богата магнием, который поможет с засыпанием. Готовьте в вашем плане на вторую неделю.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Индейка — самое диетическое мясо для сердца. Брокколи содержит клетчатку, которая поможет справиться с запорами.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
         <li><span class="ingredient-checkbox" data-recipe="6"></span>Филе бедра индейки — 150 г</li>
         <li><span class="ingredient-checkbox" data-recipe="6"></span>Брокколи — 100 г</li>
@@ -397,7 +480,9 @@ body{
         <li><span class="ingredient-checkbox" data-recipe="6"></span>Соль, перец — по вкусу</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
         <li>Нарежьте индейку, обжарьте с луком 2 минуты.</li>
         <li>Добавьте 50 мл воды, тушите под крышкой 8 минут.</li>
@@ -407,22 +492,28 @@ body{
   </div>
 </div>
 
-<!-- Рецепт 7: Обед -->
-<div class="recipe" id="recipe-7">
-  <div class="recipe-image">
-    <img src="Image/lch_006.jpeg" loading="lazy" alt="Рыба в фольге с зеленью">
-  </div>
+<!-- ОБЕД 3 -->
+<div class="section recipe" id="recipe-7">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Рыба в фольге с зеленью</h3>
     <div class="recipe-meta">
-      <span>25 минут</span><span>•</span><span>1 порция</span><span>•</span><span>320 ккал</span>
+      <span>25 мин</span>
+      <span>1 порция</span>
+      <span>320 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Омега-3 для сердца</div>
-      <div class="benefit-tag">Легкий белок</div>
+      <span class="benefit-tag">Омега-3 для сердца</span>
+      <span class="benefit-tag">Снижение ЛПНП</span>
     </div>
-    <div class="recipe-personal">Омега-3 из рыбы поддержит вашу цель — снижение давления. Запекание в фольге сохранит все полезные вещества без лишних жиров.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Рыба необходима для снижения вашего холестерина. Запекание в фольге сохраняет все омега-3 жирные кислоты, полезные для сердца.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
         <li><span class="ingredient-checkbox" data-recipe="7"></span>Филе рыбы — 150 г</li>
         <li><span class="ingredient-checkbox" data-recipe="7"></span>Любые овощи — 100 г</li>
@@ -431,7 +522,9 @@ body{
         <li><span class="ingredient-checkbox" data-recipe="7"></span>Соль, травы — по вкусу</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
         <li>Выложите рыбу и овощи на фольгу, посыпьте зеленью.</li>
         <li>Сбрызните лимонным соком, добавьте травы.</li>
@@ -441,99 +534,165 @@ body{
   </div>
 </div>
 
-<!-- Рецепт 8: Обед -->
-<div class="recipe" id="recipe-8">
-  <div class="recipe-image">
-    <img src="Image/lch_008.jpeg" loading="lazy" alt="Куриное филе с овощами">
-  </div>
+<!-- ОБЕД 4 -->
+<div class="section recipe" id="recipe-8">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
-    <h3 class="recipe-title">Куриное филе с тушеными овощами</h3>
+    <h3 class="recipe-title">Гречка с тушёными овощами и маслом гхи</h3>
     <div class="recipe-meta">
-      <span>25 минут</span><span>•</span><span>1 порция</span><span>•</span><span>340 ккал</span>
+      <span>20 мин</span>
+      <span>1 порция</span>
+      <span>340 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Белок для энергии</div>
-      <div class="benefit-tag">Витамины группы B</div>
+      <span class="benefit-tag">Магний для сна</span>
+      <span class="benefit-tag">Поддержка ЖКТ</span>
+      <span class="benefit-tag">Щадящее питание</span>
     </div>
-    <div class="recipe-personal">Сбалансированный обед для поддержания энергии и спокойствия — четвертой цели месяца. Тушение сохранит нежность мяса и пользу овощей.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Этот рецепт объединяет всё, что вам нужно: гречка для сна, овощи для пищеварения, масло гхи для щадящего питания при холецистите.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="8"></span>Куриное филе — 150 г</li>
-        <li><span class="ingredient-checkbox" data-recipe="8"></span>Морковь — 1 шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="8"></span>Болгарский перец — ½ шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="8"></span>Лук — ½ шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="8"></span>Оливковое масло — 1 ч.л.</li>
-        <li><span class="ingredient-checkbox" data-recipe="8"></span>Соль, специи — по вкусу</li>
+        <li><span class="ingredient-checkbox" data-recipe="8"></span>Гречка — 50 г</li>
+        <li><span class="ingredient-checkbox" data-recipe="8"></span>Морковь — ½ шт.</li>
+        <li><span class="ingredient-checkbox" data-recipe="8"></span>Кабачок — ½ шт.</li>
+        <li><span class="ingredient-checkbox" data-recipe="8"></span>Масло гхи — 1 ч.л.</li>
+        <li><span class="ingredient-checkbox" data-recipe="8"></span>Свежая зелень — по вкусу</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
-        <li>Нарежьте курицу кубиками, обжарьте 3 минуты.</li>
-        <li>Добавьте нарезанные овощи и 100 мл воды.</li>
-        <li>Тушите под крышкой 15-20 минут до готовности.</li>
+        <li>Отварите гречку до готовности.</li>
+        <li>Нарежьте овощи, тушите с маслом до мягкости.</li>
+        <li>Смешайте овощи с гречкой, украсьте зеленью.</li>
       </ol>
     </div>
   </div>
 </div>
 
-<!-- Рецепт 9: Ужин -->
-<div class="recipe" id="recipe-9">
-  <div class="recipe-image">
-    <img src="Image/snk_003.jpeg" loading="lazy" alt="Крем-суп из цветной капусты">
-  </div>
+<!-- УЖИН 1 -->
+<div class="section recipe" id="recipe-9">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
-    <h3 class="recipe-title">Крем-суп из цветной капусты</h3>
+    <h3 class="recipe-title">Рыба с запечённой тыквой</h3>
     <div class="recipe-meta">
-      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>200 ккал</span>
+      <span>25 мин</span>
+      <span>1 порция</span>
+      <span>280 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Легкий ужин</div>
-      <div class="benefit-tag">Для спокойного сна</div>
+      <span class="benefit-tag">Омега-3 для сердца</span>
+      <span class="benefit-tag">Бета-каротин</span>
+      <span class="benefit-tag">Успокаивающий эффект</span>
     </div>
-    <div class="recipe-personal">Маргарита, легкий ужин для вашей главной цели — спокойного сна. Не будет тяжести в желудке, организм сможет отдыхать ночью.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Лёгкий ужин с рыбой поддержит сердце, а тыква богата бета-каротином для здоровья кожи. Тимьян обладает успокаивающим эффектом перед сном.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="9"></span>Цветная капуста — 150 г</li>
-        <li><span class="ingredient-checkbox" data-recipe="9"></span>Лук — ½ шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="9"></span>Вода или овощной бульон — 250 мл</li>
+        <li><span class="ingredient-checkbox" data-recipe="9"></span>Сёмга или треска — 120 г</li>
+        <li><span class="ingredient-checkbox" data-recipe="9"></span>Тыква — 100 г</li>
         <li><span class="ingredient-checkbox" data-recipe="9"></span>Оливковое масло — 1 ч.л.</li>
+        <li><span class="ingredient-checkbox" data-recipe="9"></span>Лимонный сок — несколько капель</li>
+        <li><span class="ingredient-checkbox" data-recipe="9"></span>Тимьян — веточка</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
-        <li>Отварите капусту и лук до мягкости.</li>
-        <li>Пюрируйте блендером до кремовой консистенции.</li>
-        <li>Добавьте масло перед подачей.</li>
+        <li>Нарежьте тыкву, сбрызните маслом, запекайте 15 минут при 180°C.</li>
+        <li>Добавьте рыбу, запекайте ещё 10 минут.</li>
+        <li>Подавайте, сбрызнув лимоном и посыпав тимьяном.</li>
       </ol>
     </div>
   </div>
 </div>
 
-<!-- Рецепт 10: Ужин -->
-<div class="recipe" id="recipe-10">
-  <div class="recipe-image">
-    <img src="Image/snk_005.jpeg" loading="lazy" alt="Тёплый салат с яйцом и брокколи">
+<!-- УЖИН 2 -->
+<div class="section recipe" id="recipe-10">
+  <div class="recipe-image"></div>
+  <div class="recipe-content">
+    <h3 class="recipe-title">Запечённая тыква с корицей</h3>
+    <div class="recipe-meta">
+      <span>20 мин</span>
+      <span>1 порция</span>
+      <span>180 ккал</span>
+    </div>
+    
+    <div class="health-benefits">
+      <span class="benefit-tag">Природное снотворное</span>
+      <span class="benefit-tag">Стабилизация сахара</span>
+    </div>
+    
+    <div class="recipe-personal">
+      Тыква с корицей — природное снотворное. Корица стабилизирует сахар в крови, что поможет избежать ночных пробуждений.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
+      <ul class="ingredients-list">
+        <li><span class="ingredient-checkbox" data-recipe="10"></span>Тыква — 200 г</li>
+        <li><span class="ingredient-checkbox" data-recipe="10"></span>Корица — по вкусу</li>
+        <li><span class="ingredient-checkbox" data-recipe="10"></span>Масло гхи — 1 ч.л.</li>
+      </ul>
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
+      <ol class="steps-list">
+        <li>Нарежьте тыкву кубиками, посыпьте корицей, сбрызните гхи.</li>
+        <li>Запекайте 20 минут при 180°C до карамелизации.</li>
+      </ol>
+    </div>
   </div>
+</div>
+
+<!-- УЖИН 3 -->
+<div class="section recipe" id="recipe-11">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Тёплый салат с яйцом и брокколи</h3>
     <div class="recipe-meta">
-      <span>20 минут</span><span>•</span><span>1 порция</span><span>•</span><span>220 ккал</span>
+      <span>20 мин</span>
+      <span>1 порция</span>
+      <span>220 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Магний для сна</div>
-      <div class="benefit-tag">Клетчатка для ЖКТ</div>
+      <span class="benefit-tag">Магний для сна</span>
+      <span class="benefit-tag">Триптофан</span>
+      <span class="benefit-tag">Легкий ужин</span>
     </div>
-    <div class="recipe-personal">Этот салат работает сразу на две цели: магний поможет со сном, а клетчатка — с пищеварением. Ешьте за 2-3 часа до сна.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Магний из брокколи и триптофан из яйца — идеальное сочетание для глубокого сна. Ешьте за 2-3 часа до сна.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="10"></span>Брокколи — 100 г</li>
-        <li><span class="ingredient-checkbox" data-recipe="10"></span>Яйцо — 1 шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="10"></span>Листья салата — горсть</li>
-        <li><span class="ingredient-checkbox" data-recipe="10"></span>Оливковое масло — 1 ч.л.</li>
-        <li><span class="ingredient-checkbox" data-recipe="10"></span>Соль — щепотка</li>
+        <li><span class="ingredient-checkbox" data-recipe="11"></span>Брокколи — 100 г</li>
+        <li><span class="ingredient-checkbox" data-recipe="11"></span>Яйцо — 1 шт.</li>
+        <li><span class="ingredient-checkbox" data-recipe="11"></span>Листья салата — горсть</li>
+        <li><span class="ingredient-checkbox" data-recipe="11"></span>Оливковое масло — 1 ч.л.</li>
+        <li><span class="ingredient-checkbox" data-recipe="11"></span>Соль — щепотка</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
         <li>Отварите брокколи 5 минут, яйцо вкрутую 8 минут.</li>
         <li>Смешайте тёплые брокколи, порезанное яйцо и салат, заправьте маслом.</li>
@@ -542,71 +701,44 @@ body{
   </div>
 </div>
 
-<!-- Рецепт 11: Ужин -->
-<div class="recipe" id="recipe-11">
-  <div class="recipe-image">
-    <img src="Image/snk_012.jpeg" loading="lazy" alt="Яичница со шпинатом и зеленью">
-  </div>
+<!-- УЖИН 4 -->
+<div class="section recipe" id="recipe-12">
+  <div class="recipe-image"></div>
   <div class="recipe-content">
     <h3 class="recipe-title">Яичница со шпинатом и зеленью</h3>
     <div class="recipe-meta">
-      <span>10 минут</span><span>•</span><span>1 порция</span><span>•</span><span>220 ккал</span>
+      <span>10 мин</span>
+      <span>1 порция</span>
+      <span>220 ккал</span>
     </div>
+    
     <div class="health-benefits">
-      <div class="benefit-tag">Магний для спокойствия</div>
-      <div class="benefit-tag">Быстрый ужин</div>
+      <span class="benefit-tag">Магний для сна</span>
+      <span class="benefit-tag">Железо для крови</span>
+      <span class="benefit-tag">Быстрый ужин</span>
     </div>
-    <div class="recipe-personal">Шпинат богат магнием для вашей цели — внутреннего спокойствия. Быстрое приготовление сохранит все витамины. Идеально в дни усталости.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
+    
+    <div class="recipe-personal">
+      Шпинат — чемпион по содержанию магния для вашего спокойного сна. Быстрое приготовление сохранит максимум пользы.
+    </div>
+    
+    <div class="recipe-block">
+      <h4>Ингредиенты</h4>
       <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="11"></span>Яйца — 2 шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="11"></span>Шпинат — горсть</li>
-        <li><span class="ingredient-checkbox" data-recipe="11"></span>Зелень — по вкусу</li>
-        <li><span class="ingredient-checkbox" data-recipe="11"></span>Оливковое масло — 1 ч.л.</li>
-        <li><span class="ingredient-checkbox" data-recipe="11"></span>Соль, перец — по вкусу</li>
+        <li><span class="ingredient-checkbox" data-recipe="12"></span>Яйца — 2 шт.</li>
+        <li><span class="ingredient-checkbox" data-recipe="12"></span>Шпинат — горсть</li>
+        <li><span class="ingredient-checkbox" data-recipe="12"></span>Зелень — по вкусу</li>
+        <li><span class="ingredient-checkbox" data-recipe="12"></span>Оливковое масло — 1 ч.л.</li>
+        <li><span class="ingredient-checkbox" data-recipe="12"></span>Соль, перец — по вкусу</li>
       </ul>
     </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
+    
+    <div class="recipe-block">
+      <h4>Приготовление</h4>
       <ol class="steps-list">
-        <li>Шпинат тушите на масле 1–2 минуты.</li>
-        <li>Разбейте сверху яйца, посолите, готовьте под крышкой 4–5 минут.</li>
+        <li>Шпинат тушите на масле 1-2 минуты.</li>
+        <li>Разбейте сверху яйца, посолите, готовьте под крышкой 4-5 минут.</li>
         <li>Подавайте с рубленой зеленью.</li>
-      </ol>
-    </div>
-  </div>
-</div>
-
-<!-- Рецепт 12: Ужин -->
-<div class="recipe" id="recipe-12">
-  <div class="recipe-image">
-    <img src="Image/snk_008.jpeg" loading="lazy" alt="Овощное рагу">
-  </div>
-  <div class="recipe-content">
-    <h3 class="recipe-title">Овощное рагу с кабачками</h3>
-    <div class="recipe-meta">
-      <span>25 минут</span><span>•</span><span>2 порции</span><span>•</span><span>180 ккал</span>
-    </div>
-    <div class="health-benefits">
-      <div class="benefit-tag">Клетчатка для ЖКТ</div>
-      <div class="benefit-tag">Калий для давления</div>
-    </div>
-    <div class="recipe-personal">Это блюдо работает на две ваши цели: улучшение пищеварения и снижение давления. Готовьте двойную порцию — вторую можно разогреть завтра.</div>
-    <div class="recipe-block"><h4>Ингредиенты</h4>
-      <ul class="ingredients-list">
-        <li><span class="ingredient-checkbox" data-recipe="12"></span>Кабачок — 1 шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="12"></span>Баклажан — ½ шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="12"></span>Помидор — 1 шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="12"></span>Лук — ½ шт.</li>
-        <li><span class="ingredient-checkbox" data-recipe="12"></span>Оливковое масло — 1 ст.л.</li>
-        <li><span class="ingredient-checkbox" data-recipe="12"></span>Базилик, соль — по вкусу</li>
-      </ul>
-    </div>
-    <div class="recipe-block"><h4>Приготовление</h4>
-      <ol class="steps-list">
-        <li>Нарежьте все овощи кубиками.</li>
-        <li>Обжарьте лук, добавьте остальные овощи.</li>
-        <li>Тушите под крышкой 20 минут, периодически помешивая.</li>
-        <li>В конце добавьте базилик и соль.</li>
       </ol>
     </div>
   </div>
@@ -615,10 +747,10 @@ body{
 <!-- Финальная страница -->
 <div class="section final">
   <div class="final-message">
-    <h3>Маргарита, спасибо, что доверили мне заботу о вашем здоровье</h3>
-    <p>Пусть эти рецепты станут вашими помощниками в те дни, когда не хочется готовить. Когда кажется, что для одной не стоит стараться.</p>
-    <p>Стоит. Вы достойны красивой тарелки, вкусной еды и времени для себя.</p>
-    <p>Готовьте с удовольствием. Или не готовьте, если не хочется — это тоже нормально. Главное — будьте к себе добры.</p>
+    <h3>Маргарита, благодарю за доверие</h3>
+    <p>Эти рецепты — не просто еда. Это забота о вашем сердце, сне, пищеварении. Каждое блюдо работает на ваше здоровье.</p>
+    <p>Готовьте с удовольствием. Или не готовьте, если не хочется — это тоже нормально. Слушайте свой организм.</p>
+    <p>Помните: вы делаете важный шаг к здоровью. Каждый приготовленный завтрак, каждый лёгкий ужин — это ваша забота о себе.</p>
   </div>
   
   <div class="share-section">
@@ -632,8 +764,8 @@ body{
   <div class="final-footer">
     <div class="final-hashtag">#вашwellness</div>
     <div class="final-signature">
-      С теплом и заботой,
-      <span>Доктор Света</span>
+      С заботой о вашем здоровье,
+      <span>Доктор Светлана</span>
     </div>
   </div>
 </div>
